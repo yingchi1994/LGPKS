@@ -45,20 +45,6 @@ class Statistic():
         seg_list_exact = jieba.cut(string_data, cut_all=False)  # 精确模式分词
         object_list = []
 
-        # # 去除模式
-        # remove_words = [u'；', u'：', u'\xa0', u'有', u'数据', u'开发', u'经验', u'大',
-        #                 u'熟悉', u'/', u'。', u' ', u'、', u'技术', u'能力', u'了',u'的',
-        #                 u'和',u'1',u'2',u'3',u'4',u'5',u'6',u'7',u'8',u'9',u'0',
-        #                 u'等',u'相关',u'学习',u'或',u'了',u'进行',u'者',u'要求',u'描述',
-        #                 u'任职',u'以上',u'项目',u'应用',u'业务',u'平台',u'沟通',u'对',u'产品',
-        #                 u'设计',u'年',u'优先',u'，',u'’',u'‘',u'及',u'负责',u'工作',u'职位',
-        #                 u'具备',u'具有',u'系统',u'良好',u'团队',u'以上学历',u'使用',u'精通',u'公司',
-        #                 u'通常', u'如果', u'我们', u'需要']  # 自定义去除词库
-        #
-        # for word in seg_list_exact:  # 循环读出每个分词
-        #     if word not in remove_words:  # 如果不在去除词库中
-        #         object_list.append(word)  # 分词追加到列表
-
         filter_words = [u'Hadoop', u'Spark', u'Hive', u'Flink', u'Hbase', u'hdfs', u'Python']  # 自定义需要统计的关键词
         # 保留模式
         for word in seg_list_exact:  # 循环读出每个分词
@@ -119,22 +105,6 @@ class Statistic():
         for word in seg_list_exact:  # 循环读出每个分词
             if word not in remove_words:  # 如果不在去除词库中
                 object_list.append(word)  # 分词追加到列表
-
-        # filter_words = [u'Hadoop', u'Spark', u'Hive', u'Flink', u'Hbase', u'hdfs', u'Python', u'Shell'
-        #     , u'Kafka', u'ElasticSearch', u'Java', u'Scala', u'数据仓库', u'机器学习', u'深度学习', u'TensorFlow'
-        #     , u'数据挖掘', u'SQL', u'ETL', u'Storm',u'zookeeper',u'Spring']  # 自定义需要统计的关键词
-        # # 保留模式
-        # for word in seg_list_exact:  # 循环读出每个分词
-        #     if word in filter_words:  # 如果不在去除词库中
-        #         object_list.append(word)  # 分词追加到列表
-
-        # 正则过滤英文词汇
-        # for word in seg_list_exact:  # 循环读出每个分词
-        #     en_word = re.sub(u"([^\u0041-\u005a\u0061-\u007a])", '', word)
-        #     if en_word != '':
-        #         cap_en_word = en_word.capitalize()
-        #         object_list.append(cap_en_word)
-
 
         # 词频统计 Counter:
         word_counts_list = collections.Counter(object_list)
